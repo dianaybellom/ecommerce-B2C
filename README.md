@@ -14,6 +14,7 @@ Este proyecto empieza con la maqueta inicial de una plataforma e-Commerce, utili
 ## 🎨 Capturas de pantalla
 - Pantalla inicial
   - Desktop
+![pantalla inicial](https://github.com/user-attachments/assets/056764a8-9947-4396-a3b3-38bb8ccdd876)
 ![image](https://github.com/user-attachments/assets/8d6e84fe-b6ba-4f02-8fe7-e41709e5ce94)
 ![image](https://github.com/user-attachments/assets/04509f9c-3239-4716-be46-ac5d97fbf28b)
 ![image](https://github.com/user-attachments/assets/2ca7685e-2fa7-4d59-a2dc-71937ff414b3)
@@ -21,7 +22,6 @@ Este proyecto empieza con la maqueta inicial de una plataforma e-Commerce, utili
   - Móvil
 ![Untitled design](https://github.com/user-attachments/assets/b48fa293-5c30-4e63-8b8c-97785e98ea12)
 ![Untitled design (1)](https://github.com/user-attachments/assets/b0b17710-6bf6-4cd8-a098-130081f15209)
-
 
 
 ## 📌 Instrucciones para ejecutar
