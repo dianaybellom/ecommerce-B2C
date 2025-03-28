@@ -1,8 +1,12 @@
 import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 function App() {
   const navMenuRef = useRef<HTMLElement>(null);
   const menuToggleRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const toggle = menuToggleRef.current;
@@ -19,35 +23,6 @@ function App() {
 
   return (
     <>
-      {/* CABECERA */}
-      <header className="header">
-        <div className="container d-flex justify-content-between align-items-center py-3">
-          <div className="menu-toggle" ref={menuToggleRef}>
-            <i className="fas fa-bars"></i>
-          </div>
-
-          <div className="logo">
-            <img src="/assets/images/arcadia-logo.png" alt="Arcadia Logo" />
-          </div>
-
-          <nav className="nav-menu" ref={navMenuRef}>
-            <ul className="nav">
-              <li className="nav-item"><a className="nav-link" href="#">Colección</a></li>
-              <li className="nav-item"><a className="nav-link" href="#">Vestidos</a></li>
-              <li className="nav-item"><a className="nav-link" href="#">Blusas</a></li>
-              <li className="nav-item"><a className="nav-link" href="#">Pantalones</a></li>
-              <li className="nav-item"><a className="nav-link" href="#">Faldas</a></li>
-            </ul>
-          </nav>
-
-          <div className="header-icons">
-            <a href="#" className="icon"><i className="fas fa-search"></i></a>
-            <a href="#" className="icon"><i className="far fa-heart"></i></a>
-            <a href="#" className="icon"><i className="fas fa-shopping-cart"></i></a>
-            <a href="#" className="icon"><i className="far fa-user"></i></a>
-          </div>
-        </div>
-      </header>
 
       {/* BANNER PRINCIPAL */}
       <section className="hero-banner">
@@ -89,26 +64,6 @@ function App() {
         </div>
       </section>
 
-
-
-      {/* FOOTER */}
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-content">
-            <div className="footer-logo">
-              <img src="/assets/images/arcadia-logo.png" alt="Arcadia Logo" />
-            </div>
-            <div className="footer-social">
-              <a href="#"><i className="fab fa-facebook-f"></i></a>
-              <a href="#"><i className="fab fa-instagram"></i></a>
-              <a href="#"><i className="fa-brands fa-x-twitter"></i></a>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <p>&copy; 2025 Arcadia - Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </footer>
     </>
   );
 }
