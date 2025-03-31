@@ -6,7 +6,7 @@ Este proyecto es una plataforma e-Commerce B2C desarrollada inicialmente con **H
 - [Tecnologías utilizadas](#-tecnologías-utilizadas)
 - [Estructura del Proyecto](#-estructura-del-proyecto)
 - [Funcionalidades y Capturas de Pantalla](#-funcionalidades-y-capturas-de-pantalla)
--    [Landing Page](#-landing-page)
+-     [Landing Page](#-landing-page)
 - [Instrucciones para ejecutar](#-instrucciones-para-ejecutar)
 - [Desafíos enfrentados](#-desafíos-enfrentados)
 - [Disclaimer](#-disclaimer)
