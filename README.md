@@ -6,7 +6,8 @@ Este proyecto es una plataforma e-Commerce B2C desarrollada inicialmente con **H
 - [Tecnologías utilizadas](#-tecnologías-utilizadas)
 - [Estructura del Proyecto](#-estructura-del-proyecto)
 - [Funcionalidades y Capturas de Pantalla](#-funcionalidades-y-capturas-de-pantalla)
-  - [Landing Page](#-landing-page)
+  - [Landing Page](#landing-page)
+  - [Formulario de creación de clientes](#formulario-de-creacion-de-clientes)
 - [Instrucciones para ejecutar](#-instrucciones-para-ejecutar)
 - [Desafíos enfrentados](#-desafíos-enfrentados)
 - [Disclaimer](#-disclaimer)
@@ -32,6 +33,17 @@ Este proyecto es una plataforma e-Commerce B2C desarrollada inicialmente con **H
 ![Untitled design](https://github.com/user-attachments/assets/b48fa293-5c30-4e63-8b8c-97785e98ea12)
 ![Untitled design (1)](https://github.com/user-attachments/assets/b0b17710-6bf6-4cd8-a098-130081f15209)
 
+### Formulario de creación de clientes
+Se cuenta con un formulario para la creación de clientes con validaciones en tiempo real. Las validaciones implementadas fueron:
+- Campos obligatorios (nombre, correo, contraseña, etc.).
+- Validación de formato de correo.
+- Contraseña segura (mínimo 8 caracteres, una mayúscula y un número).
+- Coincidencia entre correo y confirmación / contraseña y confirmación.
+- Feedback visual inmediato por campo.
+- Mensajes tipo “toast” al usar el botón de registro.
+
+![Mockup Desktop - RegisterForm Ecommerce B2C](https://github.com/user-attachments/assets/5c78a03a-d06a-4120-9fa2-8a7e56eb1265)
+
 
 ## 📌 Instrucciones para ejecutar
 1. Clonar el repositorio: git clone https://github.com/dianaybellom/ecommerce-B2C.git
@@ -40,7 +52,7 @@ cd frontend
 npm install
 3. Ejecutar servidor de desarrollo:
 npm run dev
-4. Ir a http://localhost:5173/ en tu navegador (o la ruta indicada al ejecutar el servidor)
+4. Ir a http://localhost:5173/ en tu navegador (o el puerto indicado al ejecutar el servidor)
 
 
 ## 🔥 Desafíos enfrentados
