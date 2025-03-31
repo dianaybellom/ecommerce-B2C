@@ -1,0 +1,29 @@
+{
+    "productos": [
+      {
+        "id": 1,
+        "nombre": "Cérisier Dress",
+        "categoria": "Vestidos",
+        "precio": 300
+      },
+      {
+        "id": 2,
+        "nombre": "Cérisier Blouse",
+        "categoria": "Blusas",
+        "precio": 210
+      },
+      {
+        "id": 3,
+        "nombre": "Cérisier Pants",
+        "categoria": "Pantalones",
+        "precio": 200
+      },
+      {
+        "id": 4,
+        "nombre": "Cérisier Jupe",
+        "categoria": "Faldas",
+        "precio": 200
+      }	
+    ]
+  }
+  
