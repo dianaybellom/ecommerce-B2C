@@ -1,11 +1,11 @@
 # 🛒 Plataforma ecommerce-B2C
 
-Este proyecto es una plataforma e-Commerce **B2C (Business to Consumer)** desarrollada inicialmente con **HTML5, CSS3 y JavaScript**, y actualmente evolucionada a una aplicación moderna con **React**, **TypeScript** y **Vite**.
+Este proyecto es una plataforma e-Commerce B2C desarrollada inicialmente con **HTML5, CSS3 y JavaScript**, y actualmente evolucionada a una aplicación moderna con **React**, **TypeScript** y **Vite**.
 
 ## 📚 Tabla de Contenidos
 - [Tecnologías utilizadas](#-tecnologías-utilizadas)
 - [Estructura del Proyecto](#-estructura-del-proyecto)
-- [Capturas de pantalla](#-capturas-de-pantalla)
+- [Funcionalidades y Capturas de Pantalla](#-funcionalidades-y-capturas-de-pantalla)
 - [Instrucciones para ejecutar](#-instrucciones-para-ejecutar)
 - [Desafíos enfrentados](#-desafíos-enfrentados)
 - [Disclaimer](#-disclaimer)
@@ -20,17 +20,17 @@ Este proyecto es una plataforma e-Commerce **B2C (Business to Consumer)** desarr
 
 ## 📂 Estructura del Proyecto
 
-![image](https://github.com/user-attachments/assets/daf65421-4864-4265-b76c-4a6da3b29001)
+![image](https://github.com/user-attachments/assets/d6dcf7b5-0890-46a0-ab27-3a07832a635c)
 
-## 🎨 Capturas de pantalla
-- Pantalla inicial
-  - Desktop
+## 🎨 Funcionalidades y Capturas de Pantalla
+### Landing Page
+  #### Desktop
 ![pantalla inicial](https://github.com/user-attachments/assets/056764a8-9947-4396-a3b3-38bb8ccdd876)
 ![image](https://github.com/user-attachments/assets/8d6e84fe-b6ba-4f02-8fe7-e41709e5ce94)
 ![image](https://github.com/user-attachments/assets/04509f9c-3239-4716-be46-ac5d97fbf28b)
 ![image](https://github.com/user-attachments/assets/2ca7685e-2fa7-4d59-a2dc-71937ff414b3)
 
-  - Móvil
+  #### Móvil
 ![Untitled design](https://github.com/user-attachments/assets/b48fa293-5c30-4e63-8b8c-97785e98ea12)
 ![Untitled design (1)](https://github.com/user-attachments/assets/b0b17710-6bf6-4cd8-a098-130081f15209)
 
