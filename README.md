@@ -23,8 +23,7 @@ Este proyecto es una plataforma e-Commerce B2C desarrollada inicialmente con **H
 - HTML5, CSS3 & JS (versión inicial)
 
 ## 📂 Estructura del Proyecto
-
-![image](https://github.com/user-attachments/assets/d6dcf7b5-0890-46a0-ab27-3a07832a635c)
+![2025-03-31_04h30_18](https://github.com/user-attachments/assets/3ad920f8-a214-42dd-97ea-c7d8b7948cee)
 
 ## 🎨 Funcionalidades y Capturas de Pantalla
 ### Landing Page
@@ -51,7 +50,7 @@ Se cuenta con un formulario para la creación de clientes con validaciones en ti
 - Acceso administrativo desde la página general: Uso de react-router-dom para navegar sin recargar la página.
 
   #### Acceso (Móvil)
-![AdminPage](https://github.com/user-attachments/assets/8d1b1095-356f-4d20-88ff-599a77623807)
+![AdminPage](https://github.com/user-attachments/assets/705dbe1c-b04f-4c37-8213-00fde2778897)
 
   #### Gestión de Productos 
 - Página para listar productos.
