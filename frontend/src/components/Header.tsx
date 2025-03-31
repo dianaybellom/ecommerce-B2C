@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Header() {
   const navMenuRef = useRef<HTMLElement>(null);
@@ -45,9 +46,9 @@ function Header() {
           <a href="#" className="icon"><i className="fas fa-search"></i></a>
           <a href="#" className="icon"><i className="far fa-heart"></i></a>
           <a href="#" className="icon"><i className="fas fa-shopping-cart"></i></a>
-          <button onClick={() => navigate("/registro")} className="icon">
+          <Link to="/acceso" className="icon">
             <i className="far fa-user"></i>
-          </button>
+          </Link>
         </div>
       </div>
     </header>
