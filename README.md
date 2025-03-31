@@ -7,7 +7,7 @@ Este proyecto es una plataforma e-Commerce B2C desarrollada inicialmente con **H
 - [Estructura del Proyecto](#-estructura-del-proyecto)
 - [Funcionalidades y Capturas de Pantalla](#-funcionalidades-y-capturas-de-pantalla)
   - [Landing Page](#landing-page)
-  - [Formulario de creación de clientes](#formulario-de-creacion-de-clientes)
+  - [Formulario de creación de clientes](#formulario-de-creación-de-clientes)
 - [Instrucciones para ejecutar](#-instrucciones-para-ejecutar)
 - [Desafíos enfrentados](#-desafíos-enfrentados)
 - [Disclaimer](#-disclaimer)
