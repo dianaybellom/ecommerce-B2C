@@ -63,7 +63,7 @@ npm run dev
 ## 📝 Disclaimer
 Este proyecto ha sido desarrollado con el apoyo activo de ChatGPT, un modelo de lenguaje de inteligencia artificial creado por OpenAI.
 
-Debido a mi bajo expertise en desarrollo de software, creé un GPT como asistente de desarrollo, para:
+Debido a mi limitado expertise en desarrollo de software, creé un GPT como asistente de desarrollo, para:
 - Generar código base funcional
 - Resolver errores y mensajes de compilación
 - Explicar buenas prácticas
