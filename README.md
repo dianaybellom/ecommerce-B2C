@@ -1,11 +1,22 @@
 # 🛒 Plataforma ecommerce-B2C
 
-Este proyecto empieza con la maqueta inicial de una plataforma e-Commerce, utilizando **HTML5, CSS3 y JavaScript**.
+Este proyecto es una plataforma e-Commerce **B2C (Business to Consumer)** desarrollada inicialmente con **HTML5, CSS3 y JavaScript**, y actualmente evolucionada a una aplicación moderna con **React**, **TypeScript** y **Vite**.
+
+## 📚 Tabla de Contenidos
+- [Tecnologías utilizadas](#-tecnologías-utilizadas)
+- [Estructura del Proyecto](#-estructura-del-proyecto)
+- [Capturas de pantalla](#-capturas-de-pantalla)
+- [Instrucciones para ejecutar](#-instrucciones-para-ejecutar)
+- [Desafíos enfrentados](#-desafíos-enfrentados)
+- [Disclaimer](#-disclaimer)
+- [Contacto](#-contacto)
 
 ## 🚀 Tecnologías utilizadas
-- HTML5
-- CSS3
-- JavaScript
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- HTML5 & CSS3 (versión inicial)
 
 ## 📂 Estructura del Proyecto
 
@@ -26,11 +37,28 @@ Este proyecto empieza con la maqueta inicial de una plataforma e-Commerce, utili
 
 ## 📌 Instrucciones para ejecutar
 1. Clonar el repositorio: git clone https://github.com/dianaybellom/ecommerce-B2C.git
-2. Abrir index.html en el navegador.
+2. Instalar dependencias del frontend:
+cd frontend
+npm install
+3. Ejecutar servidor de desarrollo:
+npm run dev
+4. Ir a http://localhost:5173/ en tu navegador (o la ruta indicada al ejecutar el servidor)
+
 
 ## 🔥 Desafíos enfrentados
 - Diseño responsivo.
 - Carga de archivos mayor de 100MB: Para ello tuve que utilizar Git LFS
+- Migración desde HTML/CSS plano a React con Vite
 
+## 📝 Disclaimer
+Este proyecto ha sido desarrollado con el apoyo activo de **ChatGPT**, un modelo de lenguaje de inteligencia artificial creado por OpenAI.
+
+Debido a mi bajo expertise en desarrollo de software, creé un GPT como **asistente de desarrollo**, para:
+- Generar código base funcional
+- Resolver errores y mensajes de compilación
+- Explicar buenas prácticas
+
+Este es el link del GPT creado: https://chatgpt.com/g/g-67cda8de6b7c8191a38f6722c69cbf4c-cse642-soft-development-expert
+  
 ## 📫 Contacto
 dianabellomejia_@hotmail.com
