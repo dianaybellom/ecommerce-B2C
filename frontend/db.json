@@ -1,54 +1,304 @@
 {
   "productos": [
-    { "id": 1, "nombre": "Robe Fleurie", "categoria": "Vestidos", "precio": 450 },
-    { "id": 2, "nombre": "Chemisier Avenir", "categoria": "Blusas", "precio": 380 },
-    { "id": 3, "nombre": "Pantalon Cerisier Soie", "categoria": "Pantalones", "precio": 400 },
-    { "id": 4, "nombre": "Jupe Elegance", "categoria": "Faldas", "precio": 350 },
-    { "id": 5, "nombre": "Robe Sakura Dreams", "categoria": "Vestidos", "precio": 500 },
-    { "id": 6, "nombre": "Blouse Cerisier Étoile", "categoria": "Blusas", "precio": 360 },
-    { "id": 7, "nombre": "Pantalon Lumière", "categoria": "Pantalones", "precio": 420 },
-    { "id": 8, "nombre": "Jupe Cerise Mystère", "categoria": "Faldas", "precio": 330 },
-    { "id": 9, "nombre": "Vestido Belle Fleur", "categoria": "Vestidos", "precio": 480 },
-    { "id": 10, "nombre": "Blouse Printemps Éclatant", "categoria": "Blusas", "precio": 340 },
-    { "id": 11, "nombre": "Pantalón Fleur Couture", "categoria": "Pantalones", "precio": 410 },
-    { "id": 12, "nombre": "Falda Cerisier Enchanté", "categoria": "Faldas", "precio": 390 },
-    { "id": 13, "nombre": "Robe Lumière Rose", "categoria": "Vestidos", "precio": 520 },
-    { "id": 14, "nombre": "Blusa Fleur Futuriste", "categoria": "Blusas", "precio": 370 },
-    { "id": 15, "nombre": "Pantalón Avenir Charmant", "categoria": "Pantalones", "precio": 430 },
-    { "id": 16, "nombre": "Jupe Rose Cerisier", "categoria": "Faldas", "precio": 360 },
-    { "id": 17, "nombre": "Vestido Fleur Imaginée", "categoria": "Vestidos", "precio": 540 },
-    { "id": 18, "nombre": "Blouse Sakura Printemps", "categoria": "Blusas", "precio": 320 },
-    { "id": 19, "nombre": "Pantalón Cerisier Magnifique", "categoria": "Pantalones", "precio": 440 },
-    { "id": 20, "nombre": "Falda Futur Cerisier", "categoria": "Faldas", "precio": 340 },
-    { "id": 21, "nombre": "Robe Aube Fleurie", "categoria": "Vestidos", "precio": 560 },
-    { "id": 22, "nombre": "Blusa Cerisier Cristal", "categoria": "Blusas", "precio": 390 },
-    { "id": 23, "nombre": "Pantalon Printemps Lux", "categoria": "Pantalones", "precio": 450 },
-    { "id": 24, "nombre": "Jupe Cerisier Prestige", "categoria": "Faldas", "precio": 380 },
-    { "id": 25, "nombre": "Vestido Fleur du Temps", "categoria": "Vestidos", "precio": 600 },
-    { "id": 26, "nombre": "Blouse Cerisier Lumineux", "categoria": "Blusas", "precio": 410 },
-    { "id": 27, "nombre": "Pantalón Sakura Légèreté", "categoria": "Pantalones", "precio": 460 },
-    { "id": 28, "nombre": "Falda Cerisier Sophistiqué", "categoria": "Faldas", "precio": 370 },
-    { "id": 29, "nombre": "Robe Futur Floraison", "categoria": "Vestidos", "precio": 580 },
-    { "id": 30, "nombre": "Blusa Printemps Sakura", "categoria": "Blusas", "precio": 350 },
-    { "id": 31, "nombre": "Pantalón Cerisier Splendide", "categoria": "Pantalones", "precio": 470 },
-    { "id": 32, "nombre": "Jupe Cerisier Future", "categoria": "Faldas", "precio": 400 },
-    { "id": 33, "nombre": "Vestido Cerisier Royal", "categoria": "Vestidos", "precio": 630 },
-    { "id": 34, "nombre": "Blusa Avenir Délicat", "categoria": "Blusas", "precio": 330 },
-    { "id": 35, "nombre": "Pantalón Printemps Elite", "categoria": "Pantalones", "precio": 480 },
-    { "id": 36, "nombre": "Falda Fleur de Cerise", "categoria": "Faldas", "precio": 390 },
-    { "id": 37, "nombre": "Robe Cerisier Pureté", "categoria": "Vestidos", "precio": 650 },
-    { "id": 38, "nombre": "Blusa Sakura Majesté", "categoria": "Blusas", "precio": 400 },
-    { "id": 39, "nombre": "Pantalón Avenir Soirée", "categoria": "Pantalones", "precio": 490 },
-    { "id": 40, "nombre": "Jupe Cerisier Noble", "categoria": "Faldas", "precio": 410 },
-    { "id": 41, "nombre": "Vestido Sakura Éternelle", "categoria": "Vestidos", "precio": 680 },
-    { "id": 42, "nombre": "Blusa Cerisier Essence", "categoria": "Blusas", "precio": 380 },
-    { "id": 43, "nombre": "Pantalón Cerisier Royale", "categoria": "Pantalones", "precio": 500 },
-    { "id": 44, "nombre": "Falda Sakura Harmonie", "categoria": "Faldas", "precio": 420 },
-    { "id": 45, "nombre": "Vestido Fleur Infini", "categoria": "Vestidos", "precio": 700 },
-    { "id": 46, "nombre": "Blusa Fleur Futur", "categoria": "Blusas", "precio": 370 },
-    { "id": 47, "nombre": "Pantalón Avenir Finesse", "categoria": "Pantalones", "precio": 520 },
-    { "id": 48, "nombre": "Falda Cerisier Haute Couture", "categoria": "Faldas", "precio": 430 },
-    { "id": 49, "nombre": "Vestido Sakura Prestige", "categoria": "Vestidos", "precio": 750 },
-    { "id": 50, "nombre": "Blouse Printemps Suprême", "categoria": "Blusas", "precio": 390 }
+    {
+      "id": "1",
+      "nombre": "Robe Fleurie",
+      "categoria": "Vestidos",
+      "precio": 450
+    },
+    {
+      "id": "2",
+      "nombre": "Chemisier Avenir MODIFIED",
+      "categoria": "Blusas",
+      "precio": 380
+    },
+    {
+      "id": "4",
+      "nombre": "Jupe Elegance",
+      "categoria": "Faldas",
+      "precio": 350
+    },
+    {
+      "id": "5",
+      "nombre": "Robe Sakura Dreams",
+      "categoria": "Vestidos",
+      "precio": 500
+    },
+    {
+      "id": "6",
+      "nombre": "Blouse Cerisier Étoile",
+      "categoria": "Blusas",
+      "precio": 360
+    },
+    {
+      "id": "7",
+      "nombre": "Pantalon Lumière",
+      "categoria": "Pantalones",
+      "precio": 420
+    },
+    {
+      "id": "8",
+      "nombre": "Jupe Cerise Mystère",
+      "categoria": "Faldas",
+      "precio": 330
+    },
+    {
+      "id": "9",
+      "nombre": "Vestido Belle Fleur",
+      "categoria": "Vestidos",
+      "precio": 480
+    },
+    {
+      "id": "10",
+      "nombre": "Blouse Printemps Éclatant",
+      "categoria": "Blusas",
+      "precio": 340
+    },
+    {
+      "id": "11",
+      "nombre": "Pantalón Fleur Couture",
+      "categoria": "Pantalones",
+      "precio": 410
+    },
+    {
+      "id": "12",
+      "nombre": "Falda Cerisier Enchanté",
+      "categoria": "Faldas",
+      "precio": 390
+    },
+    {
+      "id": "13",
+      "nombre": "Robe Lumière Rose",
+      "categoria": "Vestidos",
+      "precio": 520
+    },
+    {
+      "id": "14",
+      "nombre": "Blusa Fleur Futuriste",
+      "categoria": "Blusas",
+      "precio": 370
+    },
+    {
+      "id": "15",
+      "nombre": "Pantalón Avenir Charmant",
+      "categoria": "Pantalones",
+      "precio": 430
+    },
+    {
+      "id": "16",
+      "nombre": "Jupe Rose Cerisier MODIFIED",
+      "categoria": "Faldas",
+      "precio": 360
+    },
+    {
+      "id": "17",
+      "nombre": "Vestido Fleur Imaginée",
+      "categoria": "Vestidos",
+      "precio": 540
+    },
+    {
+      "id": "18",
+      "nombre": "Blouse Sakura Printemps",
+      "categoria": "Blusas",
+      "precio": 320
+    },
+    {
+      "id": "19",
+      "nombre": "Pantalón Cerisier Magnifique",
+      "categoria": "Pantalones",
+      "precio": 440
+    },
+    {
+      "id": "20",
+      "nombre": "Falda Futur Cerisier",
+      "categoria": "Faldas",
+      "precio": 340
+    },
+    {
+      "id": "21",
+      "nombre": "Robe Aube Fleurie",
+      "categoria": "Vestidos",
+      "precio": 560
+    },
+    {
+      "id": "22",
+      "nombre": "Blusa Cerisier Cristal",
+      "categoria": "Blusas",
+      "precio": 390
+    },
+    {
+      "id": "23",
+      "nombre": "Pantalon Printemps Lux",
+      "categoria": "Pantalones",
+      "precio": 450
+    },
+    {
+      "id": "24",
+      "nombre": "Jupe Cerisier Prestige",
+      "categoria": "Faldas",
+      "precio": 380
+    },
+    {
+      "id": "25",
+      "nombre": "Vestido Fleur du Temps",
+      "categoria": "Vestidos",
+      "precio": 600
+    },
+    {
+      "id": "26",
+      "nombre": "Blouse Cerisier Lumineux",
+      "categoria": "Blusas",
+      "precio": 410
+    },
+    {
+      "id": "27",
+      "nombre": "Pantalón Sakura Légèreté",
+      "categoria": "Pantalones",
+      "precio": 460
+    },
+    {
+      "id": "28",
+      "nombre": "Falda Cerisier Sophistiqué",
+      "categoria": "Faldas",
+      "precio": 370
+    },
+    {
+      "id": "29",
+      "nombre": "Robe Futur Floraison",
+      "categoria": "Vestidos",
+      "precio": 580
+    },
+    {
+      "id": "30",
+      "nombre": "Blusa Printemps Sakura",
+      "categoria": "Blusas",
+      "precio": 350
+    },
+    {
+      "id": "31",
+      "nombre": "Pantalón Cerisier Splendide",
+      "categoria": "Pantalones",
+      "precio": 470
+    },
+    {
+      "id": "32",
+      "nombre": "Jupe Cerisier Future",
+      "categoria": "Faldas",
+      "precio": 400
+    },
+    {
+      "id": "33",
+      "nombre": "Vestido Cerisier Royal",
+      "categoria": "Vestidos",
+      "precio": 630
+    },
+    {
+      "id": "34",
+      "nombre": "Blusa Avenir Délicat",
+      "categoria": "Blusas",
+      "precio": 330
+    },
+    {
+      "id": "35",
+      "nombre": "Pantalón Printemps Elite",
+      "categoria": "Pantalones",
+      "precio": 480
+    },
+    {
+      "id": "36",
+      "nombre": "Falda Fleur de Cerise",
+      "categoria": "Faldas",
+      "precio": 390
+    },
+    {
+      "id": "37",
+      "nombre": "Robe Cerisier Pureté",
+      "categoria": "Vestidos",
+      "precio": 650
+    },
+    {
+      "id": "38",
+      "nombre": "Blusa Sakura Majesté",
+      "categoria": "Blusas",
+      "precio": 400
+    },
+    {
+      "id": "39",
+      "nombre": "Pantalón Avenir Soirée",
+      "categoria": "Pantalones",
+      "precio": 490
+    },
+    {
+      "id": "40",
+      "nombre": "Jupe Cerisier Noble",
+      "categoria": "Faldas",
+      "precio": 410
+    },
+    {
+      "id": "41",
+      "nombre": "Vestido Sakura Éternelle",
+      "categoria": "Vestidos",
+      "precio": 680
+    },
+    {
+      "id": "42",
+      "nombre": "Blusa Cerisier Essence",
+      "categoria": "Blusas",
+      "precio": 380
+    },
+    {
+      "id": "43",
+      "nombre": "Pantalón Cerisier Royale",
+      "categoria": "Pantalones",
+      "precio": 500
+    },
+    {
+      "id": "44",
+      "nombre": "Falda Sakura Harmonie",
+      "categoria": "Faldas",
+      "precio": 420
+    },
+    {
+      "id": "45",
+      "nombre": "Vestido Fleur Infini",
+      "categoria": "Vestidos",
+      "precio": 700
+    },
+    {
+      "id": "46",
+      "nombre": "Blusa Fleur Futur",
+      "categoria": "Blusas",
+      "precio": 370
+    },
+    {
+      "id": "47",
+      "nombre": "Pantalón Avenir Finesse",
+      "categoria": "Pantalones",
+      "precio": 520
+    },
+    {
+      "id": "48",
+      "nombre": "Falda Cerisier Haute Couture",
+      "categoria": "Faldas",
+      "precio": 430
+    },
+    {
+      "id": "49",
+      "nombre": "Vestido Sakura Prestige",
+      "categoria": "Vestidos",
+      "precio": 750
+    },
+    {
+      "id": "50",
+      "nombre": "Blouse Printemps Suprême",
+      "categoria": "Blusas",
+      "precio": 390
+    },
+    {
+      "id": "2df2",
+      "nombre": "Rope La Fleur",
+      "categoria": "Vestidos",
+      "precio": 890
+    }
   ]
 }

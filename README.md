@@ -8,6 +8,8 @@ Este proyecto es una plataforma e-Commerce B2C desarrollada inicialmente con **H
 - [Funcionalidades y Capturas de Pantalla](#-funcionalidades-y-capturas-de-pantalla)
   - [Landing Page](#landing-page)
   - [Formulario de Creación de Clientes](#formulario-de-creación-de-clientes)
+  - [Gestión Administrativa](#gestión-administrativa)
+  - [Gestión de Productos](#gestión-de-productos)
 - [Instrucciones para Ejecutar](#-instrucciones-para-ejecutar)
 - [Desafíos Enfrentados](#-desafíos-enfrentados)
 - [Disclaimer](#-disclaimer)
@@ -44,14 +46,33 @@ Se cuenta con un formulario para la creación de clientes con validaciones en ti
 
 ![Mockup Desktop - RegisterForm Ecommerce B2C](https://github.com/user-attachments/assets/5c78a03a-d06a-4120-9fa2-8a7e56eb1265)
 
+### Gestión Administrativa
+- Diseño responsivo para móviles y escritorio
+- Acceso administrativo desde la página general: Uso de react-router-dom para navegar sin recargar la página.
+
+  #### Acceso (Móvil)
+
+
+  #### Gestión de Productos 
+- Página para listar productos.
+- Página para crear producto.
+- Página para editar producto.
+- Toasts informativos con duración automática.
+- Búsqueda de productos por nombre.
+- Validación de nombre, categoría y precio antes de enviar el formulario.
+
+    ##### Con json-server
+- Gestión de productos (CRUD completo): productService.ts encapsula toda la lógica RESTful: GET, POST, PUT, DELETE.
+- Simulación de backend con JSON Server: uso de fetch (AJAX) para consumir un backend falso (json-server).
+
 
 ## 📌 Instrucciones para Ejecutar
 1. Clonar el repositorio: git clone https://github.com/dianaybellom/ecommerce-B2C.git
 2. Instalar dependencias del frontend:
-cd frontend
-npm install
+`cd frontend`
+`npm install`
 3. Ejecutar servidor de desarrollo:
-npm run dev
+`npm run dev`
 4. Ir a http://localhost:5173/ en tu navegador (o el puerto indicado al ejecutar el servidor)
 
 
