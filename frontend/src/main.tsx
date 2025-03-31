@@ -4,9 +4,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import RegisterPage from "./pages/RegisterPage";
 import MainLayout from "./layout/MainLayout";
-import { Toaster } from "@/components/ui/toaster"; // Importar Toaster
+import { Toaster } from "@/components/ui/toaster";
 import "./index.css";
-import ProductList from "@/components/products/ProductList"; // agrega este import
+import ProductList from "@/components/products/ProductList";
 import ProductForm from "@/components/products/ProductForm";
 import AccessPage from "@/pages/AccessPage";
 import AdminLayout from "@/layout/AdminLayout";
@@ -30,7 +30,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="productos/:id/editar" element={<ProductForm />} />
         </Route>
       </Routes>
-      <Toaster /> {/* Esto mostrará los toast en cualquier parte */}
+      <Toaster duration={3000} />
       </>
     </BrowserRouter>
   </React.StrictMode>

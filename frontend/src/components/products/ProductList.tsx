@@ -5,25 +5,32 @@ import {
   Producto,
 } from "@/services/productService";
 import { useNavigate } from "react-router-dom";
+import { Pencil, Trash } from "lucide-react";
+
+const limitePorPagina = 10;
 
 const ProductList = () => {
   const [productos, setProductos] = useState<Producto[]>([]);
   const [busqueda, setBusqueda] = useState("");
+  const [paginaActual, setPaginaActual] = useState(1);
+  const [hayMasPaginas, setHayMasPaginas] = useState(false);
   const navigate = useNavigate();
 
   const cargarProductos = async () => {
-    const data = await obtenerProductos();
+    const data = await obtenerProductos(paginaActual, limitePorPagina);
     setProductos(data);
+    // Si se devuelve menos del límite, no hay más páginas
+    setHayMasPaginas(data.length === limitePorPagina);
   };
 
   useEffect(() => {
     cargarProductos();
-  }, []);
+  }, [paginaActual]);
 
   const handleEliminar = async (id: number) => {
     if (confirm("¿Estás seguro de eliminar este producto?")) {
       await eliminarProducto(id);
-      cargarProductos(); // recarga la lista
+      cargarProductos();
     }
   };
 
@@ -34,10 +41,17 @@ const ProductList = () => {
   return (
     <main className="p-6 max-w-4xl mx-auto">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-semibold">Lista de Productos</h2>
+        <h2 className="text-2xl font-semibold">Productos</h2>
         <button
-          onClick={() => navigate("/productos/nuevo")}
-          className="bg-black text-white px-4 py-2 rounded hover:bg-pink-700"
+          onClick={() => navigate("/admin/productos/nuevo")}
+          style={{ backgroundColor: "#000", color: "#fff" }}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.backgroundColor = "#7f2d51")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.backgroundColor = "#000")
+          }
+          className="px-4 py-2 rounded transition"
         >
           + Nuevo producto
         </button>
@@ -48,48 +62,70 @@ const ProductList = () => {
         placeholder="Buscar por nombre..."
         value={busqueda}
         onChange={(e) => setBusqueda(e.target.value)}
-        className="mb-4 px-3 py-2 border rounded w-full"
+        className="mb-6 px-3 py-2 border rounded w-full"
       />
 
-      {productosFiltrados.length === 0 ? (
-        <p className="text-gray-500">No hay productos disponibles.</p>
-      ) : (
-        <table className="w-full border border-gray-300 text-left">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="p-2 border">Nombre</th>
-              <th className="p-2 border">Categoría</th>
-              <th className="p-2 border">Precio</th>
-              <th className="p-2 border">Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {productosFiltrados.map((producto) => (
-              <tr key={producto.id} className="hover:bg-gray-50">
-                <td className="p-2 border">{producto.nombre}</td>
-                <td className="p-2 border">{producto.categoria}</td>
-                <td className="p-2 border">${producto.precio.toLocaleString()}</td>
-                <td className="p-2 border space-x-2">
-                  <button
-                    onClick={() =>
-                      navigate(`/productos/${producto.id}/editar`)
-                    }
-                    className="text-blue-600 hover:underline"
-                  >
-                    Editar
-                  </button>
-                  <button
-                    onClick={() => handleEliminar(producto.id!)}
-                    className="text-red-600 hover:underline"
-                  >
-                    Eliminar
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+      <div className="space-y-4">
+        {productosFiltrados.length === 0 ? (
+          <p className="text-gray-500">No hay productos disponibles.</p>
+        ) : (
+          productosFiltrados.map((producto) => (
+            <div
+              key={producto.id}
+              className="bg-white border rounded shadow-sm p-4 flex items-center justify-between hover:shadow-md transition-transform duration-300 hover:scale-105"
+            >
+              <div>
+                <h3 className="text-lg font-semibold">{producto.nombre}</h3>
+                <p className="text-sm text-gray-600">
+                  Categoría: {producto.categoria}
+                </p>
+                <p className="text-sm text-gray-800 font-medium">
+                  Precio: ${producto.precio.toLocaleString()}
+                </p>
+              </div>
+
+              <div className="flex gap-3 items-center">
+                <button
+                  onClick={() =>
+                    navigate(`/admin/productos/${producto.id}/editar`)
+                  }
+                  className="text-[#7f2d51] hover:text-pink-700 hover:scale-110 transition-transform duration-200"
+                  title="Editar"
+                >
+                  <Pencil className="w-5 h-5" />
+                </button>
+
+                <button
+                  onClick={() => handleEliminar(producto.id!)}
+                  className="text-gray-400 hover:text-gray-600 hover:scale-110 transition-transform duration-200"
+                  title="Eliminar"
+                >
+                  <Trash className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* Paginación */}
+      <div className="flex justify-between mt-6 items-center">
+        <button
+          onClick={() => setPaginaActual((prev) => Math.max(prev - 1, 1))}
+          disabled={paginaActual === 1}
+          className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+        >
+          Anterior
+        </button>
+        <span className="text-sm text-gray-700">Página {paginaActual}</span>
+        <button
+          onClick={() => setPaginaActual((prev) => prev + 1)}
+          disabled={!hayMasPaginas}
+          className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+        >
+          Siguiente
+        </button>
+      </div>
     </main>
   );
 };

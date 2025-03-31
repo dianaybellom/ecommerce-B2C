@@ -1,32 +1,45 @@
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"
+import { Menu } from "lucide-react"
 
-function HeaderAdmin() {
-  const navigate = useNavigate();
+interface HeaderAdminProps {
+  onMenuClick?: () => void
+}
+
+function HeaderAdmin({ onMenuClick }: HeaderAdminProps) {
+  const navigate = useNavigate()
 
   return (
-    <header className="header bg-white shadow-md">
-      <div className="container d-flex justify-between align-items-center py-3 px-4">
+    <header className="bg-white shadow-md border-b md:sticky top-0 z-30">
+      <div className="flex justify-between items-center px-4 py-3">
+        {/* Botón hamburguesa solo visible en móvil */}
+        <button
+          onClick={onMenuClick}
+          className="md:hidden text-gray-700 hover:text-black"
+          aria-label="Abrir menú"
+        >
+          <Menu className="h-6 w-6" />
+        </button>
+
+        {/* Logo central (navega a /admin) */}
         <div
-          className="logo"
           onClick={() => navigate("/admin")}
           style={{ cursor: "pointer" }}
+          className="flex-1 text-center md:text-left"
         >
           <img
             src="/assets/images/arcadia-logo.png"
             alt="Arcadia Logo"
-            className="h-8"
+            className="h-8 mx-auto md:mx-0"
           />
         </div>
 
-        <div className="header-icons">
-          <Link to="/" className="icon" title="Volver al sitio público">
-            <i className="far fa-user"></i>
-          </Link>
-        </div>
+        {/* Ícono de usuario para volver al público */}
+        <Link to="/" className="icon text-gray-700 hover:text-black" title="Volver al sitio público">
+          <i className="far fa-user text-xl"></i>
+        </Link>
       </div>
     </header>
-  );
+  )
 }
 
-export default HeaderAdmin;
+export default HeaderAdmin
