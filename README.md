@@ -51,7 +51,7 @@ Se cuenta con un formulario para la creación de clientes con validaciones en ti
 - Acceso administrativo desde la página general: Uso de react-router-dom para navegar sin recargar la página.
 
   #### Acceso (Móvil)
-
+![AdminPage](https://github.com/user-attachments/assets/8d1b1095-356f-4d20-88ff-599a77623807)
 
   #### Gestión de Productos 
 - Página para listar productos.
@@ -64,6 +64,7 @@ Se cuenta con un formulario para la creación de clientes con validaciones en ti
     ##### Con json-server
 - Gestión de productos (CRUD completo): productService.ts encapsula toda la lógica RESTful: GET, POST, PUT, DELETE.
 - Simulación de backend con JSON Server: uso de fetch (AJAX) para consumir un backend falso (json-server).
+![Desktop - ProdMang Ecommerce B2C](https://github.com/user-attachments/assets/0f12141f-7f19-453f-bab6-e99af0f92d6a)
 
 
 ## 📌 Instrucciones para Ejecutar
