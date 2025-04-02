@@ -3,6 +3,7 @@
 Este proyecto es una plataforma e-Commerce B2C desarrollada inicialmente con **HTML5, CSS3 y JavaScript**, y actualmente evolucionada a una aplicación moderna con **React**, **TypeScript** y **Vite**.
 
 ## 📚 Tabla de Contenidos
+- [Sobre el Backend](#sobre-el-backend)
 - [Tecnologías Utilizadas](#-tecnologías-utilizadas)
 - [Estructura del Proyecto](#-estructura-del-proyecto)
 - [Funcionalidades y Capturas de Pantalla](#-funcionalidades-y-capturas-de-pantalla)
@@ -14,6 +15,9 @@ Este proyecto es una plataforma e-Commerce B2C desarrollada inicialmente con **H
 - [Desafíos Enfrentados](#-desafíos-enfrentados)
 - [Disclaimer](#-disclaimer)
 - [Contacto](#-contacto)
+
+## 🗄️ Sobre el Backend
+El backend de este proyecto se encuentra en el repositorio https://github.com/dianaybellom/ecommerce-B2C-backend
 
 ## 🚀 Tecnologías Utilizadas
 - React
