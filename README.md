@@ -3,6 +3,7 @@
 Este proyecto es una plataforma e-Commerce B2C desarrollada inicialmente con **HTML5, CSS3 y JavaScript**, y actualmente evolucionada a una aplicación moderna con **React**, **TypeScript** y **Vite**.
 
 ## 📚 Tabla de Contenidos
+- [Sobre el Backend](#-sobre-el-backend)
 - [Tecnologías Utilizadas](#-tecnologías-utilizadas)
 - [Estructura del Proyecto](#-estructura-del-proyecto)
 - [Funcionalidades y Capturas de Pantalla](#-funcionalidades-y-capturas-de-pantalla)
@@ -15,6 +16,9 @@ Este proyecto es una plataforma e-Commerce B2C desarrollada inicialmente con **H
 - [Disclaimer](#-disclaimer)
 - [Contacto](#-contacto)
 
+## 🗄️ Sobre el Backend
+El backend de este proyecto se encuentra en el repositorio https://github.com/dianaybellom/ecommerce-B2C-backend
+
 ## 🚀 Tecnologías Utilizadas
 - React
 - TypeScript
@@ -22,9 +26,8 @@ Este proyecto es una plataforma e-Commerce B2C desarrollada inicialmente con **H
 - Tailwind CSS
 - HTML5, CSS3 & JS (versión inicial)
 
-## 📂📂 Estructura del Proyecto
-
-![image](https://github.com/user-attachments/assets/d6dcf7b5-0890-46a0-ab27-3a07832a635c)
+## 📂 Estructura del Proyecto
+![2025-03-31_04h30_18](https://github.com/user-attachments/assets/3ad920f8-a214-42dd-97ea-c7d8b7948cee)
 
 ## 🖥️ Funcionalidades y Capturas de Pantalla
 ### Landing Page
@@ -51,7 +54,7 @@ Se cuenta con un formulario para la creación de clientes con validaciones en ti
 - Acceso administrativo desde la página general: Uso de react-router-dom para navegar sin recargar la página.
 
   #### Acceso (Móvil)
-
+![AdminPage](https://github.com/user-attachments/assets/705dbe1c-b04f-4c37-8213-00fde2778897)
 
   #### Gestión de Productos 
 - Página para listar productos.
@@ -64,6 +67,7 @@ Se cuenta con un formulario para la creación de clientes con validaciones en ti
     ##### Con json-server
 - Gestión de productos (CRUD completo): productService.ts encapsula toda la lógica RESTful: GET, POST, PUT, DELETE.
 - Simulación de backend con JSON Server: uso de fetch (AJAX) para consumir un backend falso (json-server).
+![Desktop - ProdMang Ecommerce B2C](https://github.com/user-attachments/assets/0f12141f-7f19-453f-bab6-e99af0f92d6a)
 
 
 ## 📌 Instrucciones para Ejecutar
