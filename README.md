@@ -22,11 +22,11 @@ Este proyecto es una plataforma e-Commerce B2C desarrollada inicialmente con **H
 - Tailwind CSS
 - HTML5, CSS3 & JS (versión inicial)
 
-## 📂 Estructura del Proyecto
+## 📂📂 Estructura del Proyecto
 
 ![image](https://github.com/user-attachments/assets/d6dcf7b5-0890-46a0-ab27-3a07832a635c)
 
-## 🎨 Funcionalidades y Capturas de Pantalla
+## 🖥️ Funcionalidades y Capturas de Pantalla
 ### Landing Page
   #### Desktop
 ![pantalla inicial](https://github.com/user-attachments/assets/056764a8-9947-4396-a3b3-38bb8ccdd876)
