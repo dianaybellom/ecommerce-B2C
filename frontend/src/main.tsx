@@ -11,6 +11,7 @@ import ProductForm from "@/components/products/ProductForm";
 import AccessPage from "@/pages/AccessPage";
 import AdminLayout from "@/layout/AdminLayout";
 import AdminDashboard from "@/pages/AdminDashboard";
+import ColeccionPage from "@/pages/ColeccionPage";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route index element={<App />} />
           <Route path="registro" element={<RegisterPage />} />
           <Route path="acceso" element={<AccessPage />} />
+          <Route path="coleccion" element={<ColeccionPage />} />
         </Route>
 
         <Route path="/admin" element={<AdminLayout />}>

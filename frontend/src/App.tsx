@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 function App() {
   const navMenuRef = useRef<HTMLElement>(null);
@@ -29,7 +29,7 @@ function App() {
         <img src="/assets/images/banner-1.png" className="img-fluid" alt="Banner Arcadia" />
         <div className="banner-text">
           <h1>FLEUR D’AVENIR | SPRING 2025</h1>
-          <a href="#" className="btn btn-custom">Ver colección</a>
+          <Link to="/coleccion" className="btn btn-custom">Ver colección</Link>
         </div>
       </section>
 

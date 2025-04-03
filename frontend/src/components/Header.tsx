@@ -34,13 +34,24 @@ function Header() {
 
         <nav className="nav-menu" ref={navMenuRef}>
           <ul className="nav">
-            <li className="nav-item"><a className="nav-link" href="#">Colección</a></li>
-            <li className="nav-item"><a className="nav-link" href="#">Vestidos</a></li>
-            <li className="nav-item"><a className="nav-link" href="#">Blusas</a></li>
-            <li className="nav-item"><a className="nav-link" href="#">Pantalones</a></li>
-            <li className="nav-item"><a className="nav-link" href="#">Faldas</a></li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/coleccion">Colección</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/coleccion?categoria=vestidos">Vestidos</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/coleccion?categoria=blusas">Blusas</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/coleccion?categoria=pantalones">Pantalones</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/coleccion?categoria=faldas">Faldas</Link>
+            </li>
           </ul>
         </nav>
+
 
         <div className="header-icons">
           <a href="#" className="icon"><i className="fas fa-search"></i></a>
