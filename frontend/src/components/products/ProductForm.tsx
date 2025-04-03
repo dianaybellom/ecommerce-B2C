@@ -1,162 +1,235 @@
 import React, { useEffect, useState } from "react";
-import {
-  crearProducto,
-  actualizarProducto,
-  obtenerProductoPorId,
-  Producto,
-} from "@/services/productService";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "@/components/ui/use-toast";
+import { Button } from "@/components/ui/button";
 
-const ProductForm = () => {
-  const [formData, setFormData] = useState<Producto | null>(null);
-  const [errores, setErrores] = useState<{ [key: string]: string }>({});
-  const navigate = useNavigate();
+const API_URL = import.meta.env.VITE_API_URL;
+
+interface Producto {
+  nombre: string;
+  categoria: string;
+  precio: number;
+  descripcion: string;
+  stock: number;
+  imagen_base64: string;
+}
+
+const ProductForm: React.FC = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
-  // Cargar datos si estamos en modo edición
+  const [formData, setFormData] = useState<Producto>({
+    nombre: "",
+    categoria: "",
+    precio: 0,
+    descripcion: "",
+    stock: 0,
+    imagen_base64: "",
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     if (id) {
-      obtenerProductoPorId(Number(id)).then((data) => {
-        setFormData(data);
-      });
-    } else {
-      // Si estamos creando, inicializamos vacío
-      setFormData({
-        nombre: "",
-        categoria: "",
-        precio: 0,
-      });
+      fetch(`${API_URL}/producto/${id}`)
+        .then((res) => res.json())
+        .then((data) => setFormData(data))
+        .catch((err) => {
+          console.error("Error cargando producto", err);
+          toast({ title: "Error", description: "No se pudo cargar el producto" });
+        });
     }
   }, [id]);
 
-  const validar = () => {
-    if (!formData) return false;
-    const errores: { [key: string]: string } = {};
-    if (!formData.nombre.trim()) errores.nombre = "El nombre es obligatorio.";
-    if (!formData.categoria.trim()) errores.categoria = "La categoría es obligatoria.";
-    if (formData.precio <= 0) errores.precio = "El precio debe ser mayor a 0.";
-    setErrores(errores);
-    return Object.keys(errores).length === 0;
+  const convertirABase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = (error) => reject(error);
+    });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImagenChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const base64 = await convertirABase64(file);
+      setFormData({ ...formData, imagen_base64: base64 });
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    if (!formData) return;
     setFormData({
       ...formData,
-      [name]: name === "precio" ? Number(value) : value,
+      [name]: name === "precio" || name === "stock" ? Number(value) : value,
     });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validar()) return;
-  
+    setIsLoading(true);
+
     try {
-      if (id) {
-        await actualizarProducto(Number(id), formData);
-        toast({
-          title: "Producto actualizado",
-          description: "Los cambios se guardaron correctamente.",
-          duration: 5000, // Opcional, por defecto 5 segundos
-        });
-      } else {
-        await crearProducto(formData);
-        toast({
-          title: "Producto creado",
-          description: "El nuevo producto fue agregado exitosamente.",
-          duration: 5000, // Opcional, por defecto 5 segundos
-        });
-      }
-  
-      // Espera brevemente para mostrar el toast antes de redirigir
-      setTimeout(() => navigate("/admin/productos"), 1200);
-    } catch (error) {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Hubo un problema al guardar el producto.",
-        duration: 5000, // Opcional, por defecto 5 segundos
+      const method = id ? "PUT" : "POST";
+      const endpoint = id ? `${API_URL}/producto/${id}` : `${API_URL}/producto`;
+
+      const response = await fetch(endpoint, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
+
+      if (!response.ok) throw new Error("Error al guardar producto");
+
+      toast({
+        title: `Producto ${id ? "actualizado" : "creado"}`,
+        description: "Operación realizada correctamente.",
+      });
+
+      navigate("/admin/productos");
+    } catch (err) {
+      console.error(err);
+      toast({
+        title: "Error",
+        description: "No se pudo guardar el producto.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
-  
-
-  const handleCancel = () => {
-    navigate("/admin/productos");
-  };
-
-  // Mostrar loading mientras se carga data
-  if (!formData) {
-    return <p className="text-center text-gray-500">Cargando producto...</p>;
-  }
 
   return (
-    <main className="p-6 max-w-xl mx-auto">
-      <h2 className="text-2xl font-semibold mb-6 text-center">
+    <div className="max-w-6xl mx-auto mt-8">
+      <h2 className="text-2xl font-bold mb-6">
         {id ? "Editar producto" : "Nuevo producto"}
       </h2>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block font-medium mb-1">Nombre</label>
-          <input
-            type="text"
-            name="nombre"
-            value={formData.nombre}
-            onChange={handleChange}
-            className="w-full border rounded px-3 py-2"
-          />
-          {errores.nombre && <p className="text-red-500 text-sm mt-1">{errores.nombre}</p>}
-        </div>
+      <div className="flex flex-col lg:flex-row gap-8">
+        {/* Formulario principal */}
+        <form onSubmit={handleSubmit} className="w-full lg:w-1/2 space-y-4 flex flex-col">
+          <div>
+            <label className="block font-medium mb-1">Nombre</label>
+            <input
+              type="text"
+              name="nombre"
+              value={formData.nombre}
+              onChange={handleChange}
+              className="w-full border rounded px-3 py-2"
+              required
+            />
+          </div>
 
-        <div>
-          <label className="block font-medium mb-1">Categoría</label>
-          <input
-            type="text"
-            name="categoria"
-            value={formData.categoria}
-            onChange={handleChange}
-            className="w-full border rounded px-3 py-2"
-          />
-          {errores.categoria && <p className="text-red-500 text-sm mt-1">{errores.categoria}</p>}
-        </div>
+          <div>
+            <label className="block font-medium mb-1">Categoría</label>
+            <input
+              type="text"
+              name="categoria"
+              value={formData.categoria}
+              onChange={handleChange}
+              className="w-full border rounded px-3 py-2"
+              required
+            />
+          </div>
 
-        <div>
-          <label className="block font-medium mb-1">Precio</label>
-          <input
-            type="number"
-            name="precio"
-            value={formData.precio}
-            onChange={handleChange}
-            className="w-full border rounded px-3 py-2"
-          />
-          {errores.precio && <p className="text-red-500 text-sm mt-1">{errores.precio}</p>}
-        </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block font-medium mb-1">Precio</label>
+              <input
+                type="number"
+                name="precio"
+                value={formData.precio}
+                onChange={handleChange}
+                className="w-full border rounded px-3 py-2"
+                required
+              />
+            </div>
+            <div>
+              <label className="block font-medium mb-1">Stock</label>
+              <input
+                type="number"
+                name="stock"
+                value={formData.stock}
+                onChange={handleChange}
+                className="w-full border rounded px-3 py-2"
+                required
+              />
+            </div>
+          </div>
 
-        {/* Botones de acción */}
-        <div className="text-right pt-4 space-x-2">
-          <button
-            type="button"
-            onClick={handleCancel}
-            className="px-6 py-2 rounded border border-gray-300 text-gray-700 hover:bg-gray-100 transition"
+          <div>
+            <label className="block font-medium mb-1">Descripción</label>
+            <textarea
+              name="descripcion"
+              value={formData.descripcion}
+              onChange={handleChange}
+              className="w-full border rounded px-3 py-2"
+              rows={3}
+            />
+          </div>
+
+          {/* Imagen solo en móviles */}
+          <div className="lg:hidden flex flex-col items-center bg-gray-100 p-4 rounded shadow">
+            <label
+              htmlFor="imagenInput"
+              className="cursor-pointer bg-black text-white px-5 py-2 rounded-full hover:bg-gray-800 transition mb-4"
+            >
+              Seleccionar imagen
+            </label>
+            <input
+              id="imagenInput"
+              type="file"
+              accept="image/*"
+              onChange={handleImagenChange}
+              className="hidden"
+            />
+            {formData.imagen_base64 ? (
+              <img
+                src={formData.imagen_base64}
+                alt="Previsualización"
+                className="w-full max-h-[300px] object-contain rounded"
+              />
+            ) : (
+              <p className="text-gray-500 text-sm text-center">
+                No se ha seleccionado una imagen
+              </p>
+            )}
+          </div>
+
+          {/* Botón al final en móviles */}
+          <Button type="submit" disabled={isLoading}>
+            {id ? "Actualizar" : "Crear"} producto
+          </Button>
+        </form>
+
+        {/* Imagen solo en escritorio */}
+        <div className="hidden lg:flex lg:w-1/2 flex-col items-center bg-gray-100 p-6 rounded shadow">
+          <label
+            htmlFor="imagenInput"
+            className="cursor-pointer bg-black text-white px-5 py-2 rounded-full hover:bg-gray-800 transition mb-6"
           >
-            Cancelar
-          </button>
-
-          <button
-            type="submit"
-            style={{ backgroundColor: "#000", color: "#fff" }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#7f2d51")}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#000")}
-            className="px-6 py-2 rounded transition"
-          >
-            {id ? "Actualizar producto" : "Crear producto"}
-          </button>
+            Seleccionar imagen
+          </label>
+          <input
+            id="imagenInput"
+            type="file"
+            accept="image/*"
+            onChange={handleImagenChange}
+            className="hidden"
+          />
+          {formData.imagen_base64 ? (
+            <img
+              src={formData.imagen_base64}
+              alt="Previsualización"
+              className="w-full max-h-[500px] object-contain rounded"
+            />
+          ) : (
+            <p className="text-gray-500 text-sm text-center">No se ha seleccionado una imagen</p>
+          )}
         </div>
-      </form>
-    </main>
+      </div>
+    </div>
   );
 };
 
