@@ -78,7 +78,8 @@ const ProductForm: React.FC = () => {
         method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
-      });
+        credentials: 'include', // importante para enviar la cookie de sesión
+      });      
 
       if (!response.ok) throw new Error("Error al guardar producto");
 
