@@ -1,22 +1,36 @@
 import * as React from "react"
+import { cn } from "@/lib/utils"
 
 const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className="rounded-xl border bg-white p-4 shadow-sm" {...props} />
+    <div
+      ref={ref}
+      className={cn("rounded-xl border bg-white p-4 shadow-sm", className)}
+      {...props}
+    />
   )
 )
 Card.displayName = "Card"
 
-export const CardHeader = ({ children }: { children: React.ReactNode }) => (
-  <div className="mb-2">{children}</div>
+const CardHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} className={cn("mb-2", className)} {...props} />
+  )
 )
+CardHeader.displayName = "CardHeader"
 
-export const CardContent = ({ children }: { children: React.ReactNode }) => (
-  <div>{children}</div>
+const CardContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} className={cn("", className)} {...props} />
+  )
 )
+CardContent.displayName = "CardContent"
 
-export const CardTitle = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="text-lg font-semibold">{children}</h3>
+const CardTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
+  ({ className, ...props }, ref) => (
+    <h3 ref={ref} className={cn("text-lg font-semibold", className)} {...props} />
+  )
 )
+CardTitle.displayName = "CardTitle"
 
-export { Card }
+export { Card, CardHeader, CardContent, CardTitle }

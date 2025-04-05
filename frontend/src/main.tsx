@@ -47,7 +47,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             <Route path="pedidos/:id" element={<AdminDetallePedidoPage />} />
           </Route>
         </Routes>
-        <Toaster duration={3000} />
+        <Toaster />
         <ChatbotWidget />
         </>
       </BrowserRouter>
