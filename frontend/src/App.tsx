@@ -1,12 +1,9 @@
 import { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 function App() {
   const navMenuRef = useRef<HTMLElement>(null);
   const menuToggleRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
-
 
   useEffect(() => {
     const toggle = menuToggleRef.current;
@@ -23,7 +20,6 @@ function App() {
 
   return (
     <>
-
       {/* BANNER PRINCIPAL */}
       <section className="hero-banner">
         <img src="/assets/images/banner-1.png" className="img-fluid" alt="Banner Arcadia" />
@@ -49,21 +45,22 @@ function App() {
       {/* SECCIÓN DE CATEGORÍAS */}
       <section className="categories">
         <div className="categories-container">
-          <div className="category-item">
+          <Link to="/coleccion?categoria=vestidos" className="category-item">
             <img src="/assets/images/category-dresses.jpg" alt="Vestidos" />
             <h3>Vestidos</h3>
-          </div>
-          <div className="category-item">
+          </Link>
+
+          <Link to="/coleccion?categoria=blusas" className="category-item">
             <img src="/assets/images/category-blouses.jpg" alt="Blusas" />
             <h3>Blusas</h3>
-          </div>
-          <div className="category-item">
+          </Link>
+
+          <Link to="/coleccion?categoria=pantalones" className="category-item">
             <img src="/assets/images/category-pants.jpg" alt="Pantalones" />
             <h3>Pantalones</h3>
-          </div>
+          </Link>
         </div>
       </section>
-
     </>
   );
 }

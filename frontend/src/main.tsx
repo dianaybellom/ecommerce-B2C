@@ -12,10 +12,12 @@ import AccessPage from "@/pages/AccessPage";
 import AdminLayout from "@/layout/AdminLayout";
 import AdminDashboard from "@/pages/AdminDashboard";
 import ColeccionPage from "@/pages/ColeccionPage";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
+    <ScrollToTop />
       <>
       <Routes>
         <Route path="/" element={<MainLayout />}>
