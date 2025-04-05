@@ -61,7 +61,7 @@ const ColeccionPage: React.FC = () => {
         Inspirada en el futuro, impregnada de la gracia des cerisiers
       </p>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {productosFiltrados.map((producto) => (
           <div
             key={producto.id}
