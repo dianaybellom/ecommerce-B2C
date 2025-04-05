@@ -1,7 +1,7 @@
 import { useNavigate, Link } from "react-router-dom"
 import { Menu, User } from "lucide-react"
 
-// ✅ Variable de entorno
+// Variable de entorno
 const API_URL = import.meta.env.VITE_API_URL
 
 interface HeaderAdminProps {
@@ -11,7 +11,7 @@ interface HeaderAdminProps {
 function HeaderAdmin({ onMenuClick }: HeaderAdminProps) {
   const navigate = useNavigate()
 
-  // ✅ Función logout usando variable de entorno
+  // Función logout usando variable de entorno
   const handleLogout = async () => {
     try {
       const response = await fetch(`${API_URL}/logout`, {

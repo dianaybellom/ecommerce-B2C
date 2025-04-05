@@ -19,6 +19,7 @@ import MisPedidosPage from "@/pages/MisPedidosPage";
 import DetallePedidoPage from "@/pages/DetallePedidoPage"
 import AdminPedidosPage from "./pages/AdminPedidosPage";
 import AdminDetallePedidoPage from "./pages/AdminDetallePedidoPage";
+import ChatbotWidget from "@/components/ChatbotWidget"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -47,6 +48,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           </Route>
         </Routes>
         <Toaster duration={3000} />
+        <ChatbotWidget />
         </>
       </BrowserRouter>
     </CartProvider>
