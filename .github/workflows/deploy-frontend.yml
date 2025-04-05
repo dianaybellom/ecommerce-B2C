@@ -19,7 +19,17 @@ jobs:
           echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" > .env
           npm run build
 
-      - name: Upload dist to EC2 frontend directory
+      - name: Clear remote frontend folder
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            sudo rm -rf /var/www/html/frontend/*
+            sudo mkdir -p /var/www/html/frontend
+
+      - name: Upload built frontend to EC2
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -27,5 +37,3 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           source: "frontend/dist/*"
           target: "/var/www/html/frontend"
-          strip_components: 0
-          rm: true
