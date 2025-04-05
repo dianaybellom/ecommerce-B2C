@@ -8,6 +8,7 @@ import {
   Menu,
   X,
   User,
+  ShoppingCart,
 } from "lucide-react";
 
 const AdminLayout = () => {
@@ -90,17 +91,21 @@ const AdminLayout = () => {
             <Boxes className="w-5 h-5" />
             <span>Productos</span>
           </Link>
+
+          <Link
+            to="/admin/pedidos"
+            className={`flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-200 ${
+              location.pathname.startsWith("/admin/pedidos") ? "bg-gray-200 font-semibold" : ""
+            }`}
+          >
+            <ShoppingCart className="w-5 h-5" />
+            <span>Pedidos</span>
+          </Link>
         </div>
 
         {/* Botones al fondo */}
         <div className="p-2 border-t">
-          <Link
-            to="/"
-            className="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100 text-gray-600"
-          >
-            <User className="w-5 h-5" />
-            <span>Acceder como cliente</span>
-          </Link>
+          
 
           <button
             onClick={handleLogout}

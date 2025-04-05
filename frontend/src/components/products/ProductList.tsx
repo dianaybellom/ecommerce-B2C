@@ -79,7 +79,7 @@ const ProductList = () => {
               <img
                 src={`${import.meta.env.VITE_API_URL}/${producto.imagen}`}
                 alt={producto.nombre}
-                className="w-24 h-24 object-contain rounded border"
+                className="w-24 h-24 object-contain"
               />
             )}
 

@@ -17,6 +17,8 @@ import CarritoPage from "./pages/CarritoPage";
 import { CartProvider } from "@/context/CartContext";
 import MisPedidosPage from "@/pages/MisPedidosPage";
 import DetallePedidoPage from "@/pages/DetallePedidoPage"
+import AdminPedidosPage from "./pages/AdminPedidosPage";
+import AdminDetallePedidoPage from "./pages/AdminDetallePedidoPage";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -40,6 +42,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             <Route path="productos" element={<ProductList />} />
             <Route path="productos/nuevo" element={<ProductForm />} />
             <Route path="productos/:id/editar" element={<ProductForm />} />
+            <Route path="pedidos" element={<AdminPedidosPage />} />
+            <Route path="pedidos/:id" element={<AdminDetallePedidoPage />} />
           </Route>
         </Routes>
         <Toaster duration={3000} />
