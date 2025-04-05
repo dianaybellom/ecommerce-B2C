@@ -15,6 +15,8 @@ import ColeccionPage from "@/pages/ColeccionPage";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import CarritoPage from "./pages/CarritoPage";
 import { CartProvider } from "@/context/CartContext";
+import MisPedidosPage from "@/pages/MisPedidosPage";
+import DetallePedidoPage from "@/pages/DetallePedidoPage"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -29,6 +31,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             <Route path="acceso" element={<AccessPage />} />
             <Route path="coleccion" element={<ColeccionPage />} />
             <Route path="carrito" element={<CarritoPage />} />
+            <Route path="/mis-pedidos" element={<MisPedidosPage />} />
+            <Route path="/mis-pedidos/:id" element={<DetallePedidoPage />} />
           </Route>
 
           <Route path="/admin" element={<AdminLayout />}>
