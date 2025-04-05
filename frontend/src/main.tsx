@@ -13,29 +13,34 @@ import AdminLayout from "@/layout/AdminLayout";
 import AdminDashboard from "@/pages/AdminDashboard";
 import ColeccionPage from "@/pages/ColeccionPage";
 import ScrollToTop from "@/components/ui/ScrollToTop";
+import CarritoPage from "./pages/CarritoPage";
+import { CartProvider } from "@/context/CartContext";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter>
-    <ScrollToTop />
-      <>
-      <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<App />} />
-          <Route path="registro" element={<RegisterPage />} />
-          <Route path="acceso" element={<AccessPage />} />
-          <Route path="coleccion" element={<ColeccionPage />} />
-        </Route>
+    <CartProvider>
+      <BrowserRouter>
+      <ScrollToTop />
+        <>
+        <Routes>
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<App />} />
+            <Route path="registro" element={<RegisterPage />} />
+            <Route path="acceso" element={<AccessPage />} />
+            <Route path="coleccion" element={<ColeccionPage />} />
+            <Route path="carrito" element={<CarritoPage />} />
+          </Route>
 
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<AdminDashboard />} />
-          <Route path="productos" element={<ProductList />} />
-          <Route path="productos/nuevo" element={<ProductForm />} />
-          <Route path="productos/:id/editar" element={<ProductForm />} />
-        </Route>
-      </Routes>
-      <Toaster duration={3000} />
-      </>
-    </BrowserRouter>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="productos" element={<ProductList />} />
+            <Route path="productos/nuevo" element={<ProductForm />} />
+            <Route path="productos/:id/editar" element={<ProductForm />} />
+          </Route>
+        </Routes>
+        <Toaster duration={3000} />
+        </>
+      </BrowserRouter>
+    </CartProvider>
   </React.StrictMode>
 );

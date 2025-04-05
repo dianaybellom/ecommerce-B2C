@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
+import { useCart } from "@/context/CartContext";
 
 interface Producto {
   id: number;
@@ -17,6 +18,7 @@ const ColeccionPage: React.FC = () => {
   const [productos, setProductos] = useState<Producto[]>([]);
   const [productosFiltrados, setProductosFiltrados] = useState<Producto[]>([]);
   const [searchParams] = useSearchParams();
+  const { agregarProducto } = useCart();
 
   useEffect(() => {
     fetch(`${API_URL}/producto`)
@@ -27,7 +29,6 @@ const ColeccionPage: React.FC = () => {
         return res.json();
       })
       .then((data) => {
-        console.log("Productos cargados:", data);
         setProductos(data);
       })
       .catch((err) => console.error("Error cargando productos:", err));
@@ -46,12 +47,8 @@ const ColeccionPage: React.FC = () => {
     }
   }, [productos, searchParams]);
 
-  const agregarAlCarrito = (producto: Producto) => {
-    const carritoGuardado = localStorage.getItem("carrito");
-    const carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
-    carrito.push({ ...producto, cantidad: 1 });
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    alert(`${producto.nombre} agregado al carrito`);
+  const handleAgregar = (producto: Producto) => {
+    agregarProducto({ ...producto, cantidad: 1 });
   };
 
   return (
@@ -84,8 +81,11 @@ const ColeccionPage: React.FC = () => {
               </div>
 
               <button
-                onClick={() => agregarAlCarrito(producto)}
-                className="bg-black text-white p-2 rounded-full hover:bg-gray-800 transition"
+                onClick={() => handleAgregar(producto)}
+                className="text-white p-2 rounded-full font-bold transition"
+                style={{ backgroundColor: "#000" }}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#7f2d51")}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#000")}
                 title="Agregar al carrito"
               >
                 <FaCartPlus />
