@@ -8,11 +8,11 @@ const API_URL = import.meta.env.VITE_API_URL;
 interface Producto {
   nombre: string;
   categoria: string;
-  precio: number;
+  precio: number | string;
   descripcion: string;
-  stock: number;
+  stock: number | string;
   imagen_base64: string;
-  imagen?: string; // imagen guardada (ruta relativa)
+  imagen?: string;
 }
 
 const ProductForm: React.FC = () => {
@@ -22,9 +22,9 @@ const ProductForm: React.FC = () => {
   const [formData, setFormData] = useState<Producto>({
     nombre: "",
     categoria: "",
-    precio: 0,
+    precio: "",
     descripcion: "",
-    stock: 0,
+    stock: "",
     imagen_base64: "",
   });
 
@@ -37,7 +37,9 @@ const ProductForm: React.FC = () => {
         .then((data) => {
           setFormData({
             ...data,
-            imagen_base64: "", // limpiamos base64 para no sobreescribir
+            precio: data.precio.toString(),
+            stock: data.stock.toString(),
+            imagen_base64: "",
           });
         })
         .catch((err) => {
@@ -66,15 +68,34 @@ const ProductForm: React.FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: name === "precio" || name === "stock" ? Number(value) : value,
-    });
+
+    if (name === "precio" || name === "stock") {
+      setFormData({
+        ...formData,
+        [name]: value === "" ? "" : value,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+
+    // Validar campos numéricos antes de enviar
+    if (formData.precio === "" || formData.stock === "") {
+      toast({
+        title: "Campos requeridos",
+        description: "Debes ingresar un precio y stock válidos.",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
 
     try {
       const method = id ? "PUT" : "POST";
@@ -83,8 +104,12 @@ const ProductForm: React.FC = () => {
       const response = await fetch(endpoint, {
         method,
         headers: { "Content-Type": "application/json" },
-        credentials: 'include',
-        body: JSON.stringify(formData),
+        credentials: "include",
+        body: JSON.stringify({
+          ...formData,
+          precio: Number(formData.precio),
+          stock: Number(formData.stock),
+        }),
       });
 
       if (!response.ok) throw new Error("Error al guardar producto");
@@ -114,7 +139,6 @@ const ProductForm: React.FC = () => {
       </h2>
 
       <div className="flex flex-col lg:flex-row gap-8">
-        {/* Formulario principal */}
         <form onSubmit={handleSubmit} className="w-full lg:w-1/2 space-y-4 flex flex-col">
           <div>
             <label className="block font-medium mb-1">Nombre</label>
@@ -176,7 +200,6 @@ const ProductForm: React.FC = () => {
             />
           </div>
 
-          {/* Imagen solo en móviles */}
           <div className="lg:hidden flex flex-col items-center bg-gray-100 p-4 rounded shadow">
             <label
               htmlFor="imagenInput"
@@ -210,13 +233,12 @@ const ProductForm: React.FC = () => {
             )}
           </div>
 
-          {/* Botón al final en móviles */}
           <Button type="submit" disabled={isLoading}>
             {id ? "Actualizar" : "Crear"} producto
           </Button>
         </form>
 
-        {/* Imagen solo en escritorio */}
+        {/* Imagen en escritorio */}
         <div className="hidden lg:flex lg:w-1/2 flex-col items-center bg-gray-100 p-6 rounded shadow">
           <label
             htmlFor="imagenInput"

@@ -1,5 +1,8 @@
 import { useNavigate, Link } from "react-router-dom"
-import { Menu } from "lucide-react"
+import { Menu, User } from "lucide-react"
+
+// ✅ Variable de entorno
+const API_URL = import.meta.env.VITE_API_URL
 
 interface HeaderAdminProps {
   onMenuClick?: () => void
@@ -7,6 +10,24 @@ interface HeaderAdminProps {
 
 function HeaderAdmin({ onMenuClick }: HeaderAdminProps) {
   const navigate = useNavigate()
+
+  // ✅ Función logout usando variable de entorno
+  const handleLogout = async () => {
+    try {
+      const response = await fetch(`${API_URL}/logout`, {
+        method: "GET",
+        credentials: "include",
+      })
+
+      if (response.ok) {
+        navigate("/") // redirigir al sitio público
+      } else {
+        console.error("Error al cerrar sesión")
+      }
+    } catch (error) {
+      console.error("Error en logout:", error)
+    }
+  }
 
   return (
     <header className="bg-white shadow-md border-b md:sticky top-0 z-30">
@@ -33,10 +54,17 @@ function HeaderAdmin({ onMenuClick }: HeaderAdminProps) {
           />
         </div>
 
-        {/* Ícono de usuario para volver al público */}
-        <Link to="/" className="icon text-gray-700 hover:text-black" title="Volver al sitio público">
-          <i className="far fa-user text-xl"></i>
-        </Link>
+        {/* Volver al sitio público */}
+        <div className="flex items-center gap-3">
+
+          {/* Botón de salir */}
+          <button
+            onClick={handleLogout}
+            className="text-gray-700 hover:text-black"
+          >
+            <User className="w-6 h-6" />
+          </button>
+        </div>
       </div>
     </header>
   )

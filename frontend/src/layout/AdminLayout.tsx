@@ -11,6 +11,9 @@ import {
   ShoppingCart,
 } from "lucide-react";
 
+// ✅ Insertamos la variable de entorno
+const API_URL = import.meta.env.VITE_API_URL;
+
 const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
@@ -26,16 +29,13 @@ const AdminLayout = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch("http://localhost:8080/logout", {
+      const response = await fetch(`${API_URL}/logout`, {
         method: "GET",
-        credentials: "include", // importante si usas cookies
+        credentials: "include",
       });
 
       if (response.ok) {
-        // Aquí puedes limpiar cualquier estado local si lo usas
-        // localStorage.removeItem("token");
-
-        navigate("/"); // Redirige al inicio o login
+        navigate("/");
       } else {
         console.error("Error al cerrar sesión");
       }
@@ -46,7 +46,6 @@ const AdminLayout = () => {
 
   return (
     <div className="flex h-screen bg-gray-100 overflow-hidden">
-      {/* BACKDROP para móvil */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 bg-black/30 z-30 md:hidden"
@@ -54,13 +53,11 @@ const AdminLayout = () => {
         />
       )}
 
-      {/* SIDEBAR */}
       <aside
         className={`fixed z-40 md:static bg-white shadow-lg transition-all duration-300 flex flex-col justify-between
           ${sidebarOpen ? "translate-x-0 w-64" : "-translate-x-full md:translate-x-0 md:w-64"}
           h-screen`}
       >
-        {/* Encabezado */}
         <div className="flex items-center justify-between px-4 py-3 border-b">
           <span className="font-semibold text-lg">Administrador</span>
           <button className="md:hidden" onClick={toggleSidebar}>
@@ -68,7 +65,6 @@ const AdminLayout = () => {
           </button>
         </div>
 
-        {/* Navegación */}
         <div className="p-2 space-y-2 flex-1">
           <Link
             to="/admin"
@@ -103,10 +99,7 @@ const AdminLayout = () => {
           </Link>
         </div>
 
-        {/* Botones al fondo */}
         <div className="p-2 border-t">
-          
-
           <button
             onClick={handleLogout}
             className="w-full text-left flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100 text-red-600"
@@ -117,7 +110,6 @@ const AdminLayout = () => {
         </div>
       </aside>
 
-      {/* CONTENIDO PRINCIPAL */}
       <div className="flex-1 flex flex-col w-full h-screen overflow-y-auto">
         <HeaderAdmin onMenuClick={toggleSidebar} />
         <main className="p-6">
