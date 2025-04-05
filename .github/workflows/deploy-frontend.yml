@@ -13,6 +13,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install dependencies and build
+        working-directory: ./frontend
         run: |
           npm install
           echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" > .env
@@ -24,7 +25,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_KEY }}
-          source: "dist/"
+          source: "frontend/dist/"
           target: "/var/www/html/frontend"
           rm: true
           strip_components: 1
