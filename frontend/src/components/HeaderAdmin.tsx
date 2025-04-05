@@ -1,4 +1,4 @@
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate} from "react-router-dom"
 import { Menu, User } from "lucide-react"
 
 // Variable de entorno

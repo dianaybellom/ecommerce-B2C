@@ -5,9 +5,7 @@ import {
   LayoutDashboard,
   Boxes,
   LogOut,
-  Menu,
   X,
-  User,
   ShoppingCart,
 } from "lucide-react";
 
