@@ -31,15 +31,10 @@ function App() {
 
       {/* SECCIÓN SOBRE LA COLECCIÓN */}
       <section className="about-collection">
-        <div className="container d-flex align-items-center">
-          <div className="text-content">
+          <div className="text-content" style={{ textAlign: "center"}} >
             <h2>SOBRE LA COLECCIÓN</h2>
             <p>Inspirada en el futuro, impregnada de la gracia des cerisiers</p>
           </div>
-          <div className="gif-content">
-            <img src="/assets/images/cherry-blossom.gif" alt="Pétalos de Cerezo" className="falling-petals" />
-          </div>
-        </div>
       </section>
 
       {/* SECCIÓN DE CATEGORÍAS */}

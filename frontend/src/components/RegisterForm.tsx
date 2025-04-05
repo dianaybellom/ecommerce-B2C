@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { toast } from "@/components/ui/use-toast";
 import { useNavigate } from "react-router-dom";
@@ -104,7 +103,6 @@ const RegisterForm = () => {
       correo: formData.correo,
       contrasena: formData.contraseña,
       telefono: formData.telefono,
-      ...(formData.correo === "dianabellomejia_@hotmail.com" && { rol: "ADMIN" }),
     };
 
     try {
@@ -172,7 +170,7 @@ const RegisterForm = () => {
               </select>
               <select name="mes" value={formData.mes} onChange={handleChange} className="border rounded px-3 py-2">
                 <option value="">Mes</option>
-                {[ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ]
+                {["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
                   .map((mes, i) => (<option key={i + 1} value={i + 1}>{mes}</option>))}
               </select>
               <select name="año" value={formData.año} onChange={handleChange} className="border rounded px-3 py-2">
