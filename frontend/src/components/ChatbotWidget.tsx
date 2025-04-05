@@ -1,30 +1,39 @@
-import React, { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef } from "react"
 import { MessageSquare, Sparkles, Minus, SendHorizontal } from "lucide-react"
 
 const API_URL = import.meta.env.VITE_API_URL
 
+type Mensaje = {
+  from: "usuario" | "bot"
+  text: string
+}
+
 const ChatbotWidget = () => {
   const [mensaje, setMensaje] = useState("")
-  const [conversacion, setConversacion] = useState([])
+  const [conversacion, setConversacion] = useState<Mensaje[]>([])
   const [visible, setVisible] = useState(false)
-  const chatContainerRef = useRef(null)
+  const chatContainerRef = useRef<HTMLDivElement>(null)
 
   const enviarMensaje = async () => {
     if (!mensaje.trim()) return
 
-    const nuevoChat = [...conversacion, { from: "usuario", text: mensaje }]
+    const nuevoChat: Mensaje[] = [...conversacion, { from: "usuario", text: mensaje }]
     setConversacion(nuevoChat)
     setMensaje("")
 
-    const res = await fetch(`${API_URL}/chatbot`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ mensaje }),
-    })
+    try {
+      const res = await fetch(`${API_URL}/chatbot`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ mensaje }),
+      })
 
-    const data = await res.json()
-    setConversacion([...nuevoChat, { from: "bot", text: data.respuesta }])
+      const data = await res.json()
+      setConversacion([...nuevoChat, { from: "bot", text: data.respuesta }])
+    } catch (error) {
+      setConversacion([...nuevoChat, { from: "bot", text: "Error al conectar con el servidor." }])
+    }
   }
 
   useEffect(() => {
@@ -37,12 +46,12 @@ const ChatbotWidget = () => {
     <>
       {!visible && (
         <button
-        onClick={() => setVisible(true)}
-        className="fixed bottom-6 right-6 w-16 h-16 bg-[#7f2d51] text-white rounded-full shadow-xl flex items-center justify-center hover:scale-110 transition-transform duration-300"
-      >
-        <MessageSquare className="absolute" size={26} />
-        <Sparkles className="absolute ml-6 mb-6" size={18} />
-      </button>      
+          onClick={() => setVisible(true)}
+          className="fixed bottom-6 right-6 w-16 h-16 bg-[#7f2d51] text-white rounded-full shadow-xl flex items-center justify-center hover:scale-110 transition-transform duration-300"
+        >
+          <MessageSquare className="absolute" size={26} />
+          <Sparkles className="absolute ml-6 mb-6" size={18} />
+        </button>
       )}
 
       {visible && (
