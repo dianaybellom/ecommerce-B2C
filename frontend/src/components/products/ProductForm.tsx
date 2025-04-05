@@ -12,6 +12,7 @@ interface Producto {
   descripcion: string;
   stock: number;
   imagen_base64: string;
+  imagen?: string; // imagen guardada (ruta relativa)
 }
 
 const ProductForm: React.FC = () => {
@@ -31,9 +32,14 @@ const ProductForm: React.FC = () => {
 
   useEffect(() => {
     if (id) {
-      fetch(`${API_URL}/producto/${id}`)
+      fetch(`${API_URL}/producto/${id}`, { credentials: "include" })
         .then((res) => res.json())
-        .then((data) => setFormData(data))
+        .then((data) => {
+          setFormData({
+            ...data,
+            imagen_base64: "", // limpiamos base64 para no sobreescribir
+          });
+        })
         .catch((err) => {
           console.error("Error cargando producto", err);
           toast({ title: "Error", description: "No se pudo cargar el producto" });
@@ -77,9 +83,9 @@ const ProductForm: React.FC = () => {
       const response = await fetch(endpoint, {
         method,
         headers: { "Content-Type": "application/json" },
+        credentials: 'include',
         body: JSON.stringify(formData),
-        credentials: 'include', // importante para enviar la cookie de sesión
-      });      
+      });
 
       if (!response.ok) throw new Error("Error al guardar producto");
 
@@ -191,6 +197,12 @@ const ProductForm: React.FC = () => {
                 alt="Previsualización"
                 className="w-full max-h-[300px] object-contain rounded"
               />
+            ) : formData.imagen ? (
+              <img
+                src={`${API_URL}/${formData.imagen}`}
+                alt="Imagen del producto"
+                className="w-full max-h-[300px] object-contain rounded"
+              />
             ) : (
               <p className="text-gray-500 text-sm text-center">
                 No se ha seleccionado una imagen
@@ -225,8 +237,16 @@ const ProductForm: React.FC = () => {
               alt="Previsualización"
               className="w-full max-h-[500px] object-contain rounded"
             />
+          ) : formData.imagen ? (
+            <img
+              src={`${API_URL}/${formData.imagen}`}
+              alt="Imagen del producto"
+              className="w-full max-h-[500px] object-contain rounded"
+            />
           ) : (
-            <p className="text-gray-500 text-sm text-center">No se ha seleccionado una imagen</p>
+            <p className="text-gray-500 text-sm text-center">
+              No se ha seleccionado una imagen
+            </p>
           )}
         </div>
       </div>

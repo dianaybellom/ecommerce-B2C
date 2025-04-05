@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 import HeaderAdmin from "@/components/HeaderAdmin";
 import {
   LayoutDashboard,
@@ -13,6 +13,7 @@ import {
 const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
@@ -21,6 +22,26 @@ const AdminLayout = () => {
   }, [location.pathname]);
 
   const isActive = (path: string) => location.pathname === path;
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/logout", {
+        method: "GET",
+        credentials: "include", // importante si usas cookies
+      });
+
+      if (response.ok) {
+        // Aquí puedes limpiar cualquier estado local si lo usas
+        // localStorage.removeItem("token");
+
+        navigate("/"); // Redirige al inicio o login
+      } else {
+        console.error("Error al cerrar sesión");
+      }
+    } catch (error) {
+      console.error("Error en logout:", error);
+    }
+  };
 
   return (
     <div className="flex h-screen bg-gray-100 overflow-hidden">
@@ -81,13 +102,13 @@ const AdminLayout = () => {
             <span>Acceder como cliente</span>
           </Link>
 
-          <Link
-            to="/"
-            className="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100 text-red-600"
+          <button
+            onClick={handleLogout}
+            className="w-full text-left flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100 text-red-600"
           >
             <LogOut className="w-5 h-5" />
             <span>Salir</span>
-          </Link>
+          </button>
         </div>
       </aside>
 

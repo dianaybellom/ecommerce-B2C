@@ -19,7 +19,9 @@ const AccessPage = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ correo, contrasena }),
+        credentials: "include" // clave para enviar y guardar cookies
       });
+      
 
       if (!response.ok) throw new Error("Credenciales inválidas");
 

@@ -65,48 +65,60 @@ const ProductList = () => {
         className="mb-6 px-3 py-2 border rounded w-full"
       />
 
-      <div className="space-y-4">
-        {productosFiltrados.length === 0 ? (
-          <p className="text-gray-500">No hay productos disponibles.</p>
-        ) : (
-          productosFiltrados.map((producto) => (
-            <div
-              key={producto.id}
-              className="bg-white border rounded shadow-sm p-4 flex items-center justify-between hover:shadow-md transition-transform duration-300 hover:scale-105"
-            >
-              <div>
-                <h3 className="text-lg font-semibold">{producto.nombre}</h3>
-                <p className="text-sm text-gray-600">
-                  Categoría: {producto.categoria}
-                </p>
-                <p className="text-sm text-gray-800 font-medium">
-                  Precio: ${producto.precio.toLocaleString()}
-                </p>
-              </div>
+    <div className="space-y-4">
+      {productosFiltrados.length === 0 ? (
+        <p className="text-gray-500">No hay productos disponibles.</p>
+      ) : (
+        productosFiltrados.map((producto) => (
+          <div
+            key={producto.id}
+            className="bg-white border rounded shadow-sm p-4 flex gap-4 items-center hover:shadow-md transition-transform duration-300 hover:scale-105"
+          >
+            {/* Imagen del producto */}
+            {producto.imagen && (
+              <img
+                src={`${import.meta.env.VITE_API_URL}/${producto.imagen}`}
+                alt={producto.nombre}
+                className="w-24 h-24 object-contain rounded border"
+              />
+            )}
 
-              <div className="flex gap-3 items-center">
-                <button
-                  onClick={() =>
-                    navigate(`/admin/productos/${producto.id}/editar`)
-                  }
-                  className="text-[#7f2d51] hover:text-pink-700 hover:scale-110 transition-transform duration-200"
-                  title="Editar"
-                >
-                  <Pencil className="w-5 h-5" />
-                </button>
-
-                <button
-                  onClick={() => handleEliminar(producto.id!)}
-                  className="text-gray-400 hover:text-gray-600 hover:scale-110 transition-transform duration-200"
-                  title="Eliminar"
-                >
-                  <Trash className="w-5 h-5" />
-                </button>
-              </div>
+            {/* Info del producto */}
+            <div className="flex-1">
+              <h3 className="text-lg font-semibold">{producto.nombre}</h3>
+              <p className="text-sm text-gray-600">
+                Categoría: {producto.categoria}
+              </p>
+              <p className="text-sm text-gray-800 font-medium">
+                Precio: ${producto.precio.toLocaleString()}
+              </p>
             </div>
-          ))
-        )}
-      </div>
+
+            {/* Acciones */}
+            <div className="flex gap-3 items-center">
+              <button
+                onClick={() =>
+                  navigate(`/admin/productos/${producto.id}/editar`)
+                }
+                className="text-[#7f2d51] hover:text-pink-700 hover:scale-110 transition-transform duration-200"
+                title="Editar"
+              >
+                <Pencil className="w-5 h-5" />
+              </button>
+
+              <button
+                onClick={() => handleEliminar(producto.id!)}
+                className="text-gray-400 hover:text-gray-600 hover:scale-110 transition-transform duration-200"
+                title="Eliminar"
+              >
+                <Trash className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        ))
+      )}
+    </div>
+
 
       {/* Paginación */}
       <div className="flex justify-between mt-6 items-center">
