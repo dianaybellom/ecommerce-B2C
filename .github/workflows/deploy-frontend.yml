@@ -28,4 +28,3 @@ jobs:
           source: "frontend/dist/*"
           target: "/var/www/html/frontend"
           rm: true
-          strip_components: 0
