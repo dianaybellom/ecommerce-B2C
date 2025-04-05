@@ -66,7 +66,7 @@ const DetallePedidoPage: React.FC = () => {
               onClick={() => navigate("/mis-pedidos")}
               className="text-[#7f2d51] hover:underline text-sm font-medium"
             >
-              Volver a mis pedidos
+              Ir a mis pedidos
             </button>
           </div>
 

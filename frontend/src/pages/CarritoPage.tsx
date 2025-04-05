@@ -66,16 +66,18 @@ const CarritoPage: React.FC = () => {
         cantidad: item.cantidad,
       }));
 
-      await crearPedido(productos);
+      const respuesta = await crearPedido(productos);
 
-      toast({
+        toast({
         title: "Pedido creado",
         description: "Tu pedido fue registrado exitosamente",
-      });
+        });
 
-      localStorage.removeItem("carrito");
-      setCarrito([]);
-      navigate("/mis-pedidos");
+        localStorage.removeItem("carrito");
+        setCarrito([]);
+
+        navigate(`/mis-pedidos/${respuesta.pedido_id}`);
+
     } catch (err) {
       console.error("Error al crear pedido:", err);
 
